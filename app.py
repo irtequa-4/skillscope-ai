@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import ast
 import PyPDF2
 import io
-
+import re
 
 # Page config
 st.set_page_config(
@@ -195,33 +195,41 @@ with tab4:
             st.warning("Please enter your skills first.")
 
 
-# Add as tab5:
-with tab5:  # add "📄 Resume Upload" to the tab list above
+with tab5:
     st.subheader("📄 Upload Your Resume")
     uploaded_file = st.file_uploader("Upload PDF resume", type=["pdf"])
-    
+
+    import re
+    SKILLS_LOCAL = ["python","java","javascript","typescript","c++","c#","go","rust",
+              "react","angular","vue","node.js","django","flask","fastapi",
+              "machine learning","deep learning","nlp","tensorflow","pytorch",
+              "scikit-learn","pandas","numpy","generative ai","llm","langchain",
+              "aws","azure","gcp","docker","kubernetes","terraform","ci/cd",
+              "sql","mysql","postgresql","mongodb","redis","elasticsearch",
+              "power bi","tableau","spark","hadoop","kafka","git","linux"]
+
+    def extract_skills_local(text):
+        text_lower = text.lower()
+        return [s for s in SKILLS_LOCAL if re.search(r'\b' + re.escape(s) + r'\b', text_lower)]
+
     if uploaded_file:
-        # Extract text from PDF
         pdf_reader = PyPDF2.PdfReader(io.BytesIO(uploaded_file.read()))
         resume_text = ""
         for page in pdf_reader.pages:
             resume_text += page.extract_text()
-        
-        # Extract skills from resume
-        from skill_extractor import extract_skills
-        resume_skills = extract_skills(resume_text)
-        
+
+        resume_skills = extract_skills_local(resume_text)
+
         st.success(f"Found {len(resume_skills)} recognized skills in your resume")
         st.write("**Detected Skills:**", ", ".join([s.title() for s in resume_skills]))
-        
-        # Gap analysis
+
         market_top30 = set(skills_df.head(30)["skill"].tolist())
         missing = market_top30 - set(resume_skills)
         match_pct = (len(market_top30) - len(missing)) / len(market_top30) * 100
-        
+
         st.metric("Resume-Market Match Score", f"{match_pct:.0f}%")
         st.progress(int(match_pct))
-        
+
         st.subheader("Top Skills to Add to Resume")
         priority_skills = skills_df[skills_df["skill"].isin(missing)].head(10)
         for _, row in priority_skills.iterrows():
