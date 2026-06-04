@@ -1,0 +1,76 @@
+skill,count,percentage
+excel,18107,14.62
+go,8829,7.13
+sql,5183,4.19
+r,4891,3.95
+python,4648,3.75
+aws,3161,2.55
+azure,2918,2.36
+java,2664,2.15
+javascript,1961,1.58
+express,1824,1.47
+html,1772,1.43
+machine learning,1710,1.38
+linux,1701,1.37
+react,1420,1.15
+ci/cd,1354,1.09
+data science,1322,1.07
+tableau,1245,1.01
+git,1206,0.97
+kubernetes,1168,0.94
+power bi,1069,0.86
+docker,1058,0.85
+gcp,1010,0.82
+css,1003,0.81
+spark,856,0.69
+jenkins,746,0.6
+angular,678,0.55
+terraform,662,0.53
+ios,570,0.46
+kafka,550,0.44
+github,528,0.43
+typescript,521,0.42
+android,511,0.41
+mysql,465,0.38
+scala,392,0.32
+node.js,387,0.31
+unity,387,0.31
+swift,362,0.29
+postgresql,325,0.26
+generative ai,325,0.26
+php,317,0.26
+hadoop,313,0.25
+mongodb,310,0.25
+gitlab,290,0.23
+ruby,283,0.23
+deep learning,282,0.23
+pytorch,243,0.2
+computer vision,242,0.2
+llm,239,0.19
+blockchain,237,0.19
+tensorflow,224,0.18
+nlp,206,0.17
+airflow,173,0.14
+redis,173,0.14
+vue,169,0.14
+kotlin,136,0.11
+rust,126,0.1
+c++,104,0.08
+django,102,0.08
+pandas,95,0.08
+elasticsearch,93,0.08
+scikit-learn,89,0.07
+web3,87,0.07
+numpy,85,0.07
+flask,81,0.07
+c#,60,0.05
+flutter,52,0.04
+next.js,42,0.03
+keras,42,0.03
+openai,40,0.03
+langchain,29,0.02
+fastapi,27,0.02
+dart,23,0.02
+firebase,15,0.01
+solidity,13,0.01
+hugging face,8,0.01
